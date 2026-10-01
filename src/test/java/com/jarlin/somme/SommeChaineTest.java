@@ -15,45 +15,86 @@ import static org.assertj.core.api.Assertions.*;
  *   somme("1,a")       -> NumberFormatException : nombre invalide
  *   somme("1,2", "3")  -> 6    : VarArgs, plusieurs chaînes
  */
-public class SommeChaineTest {
+class SommeChaineTest {
 
     @Test
-    void somme_d_une_chaine_vide_devrait_retourner_0() {
-        assertThat(SommeChaine.somme("")).isZero();
+    void devrait_retourner_0_pour_une_chaine_vide() {
+        // GIVEN
+        var chaine = "";
+        // WHEN
+        var somme = SommeChaine.somme(chaine);
+        // THEN
+        assertThat(somme).isZero();
     }
 
     @Test
-    void somme_de_4_devrait_retourner_4() {
-        assertThat(SommeChaine.somme("4")).isEqualTo(4);
+    void devrait_retourner_le_nombre_pour_un_seul_nombre() {
+        // GIVEN
+        var chaine = "4";
+        // WHEN
+        var somme = SommeChaine.somme(chaine);
+        // THEN
+        assertThat(somme).isEqualTo(4);
     }
 
     @Test
-    void somme_de_1_2_devrait_retourner_3() {
-        assertThat(SommeChaine.somme("1,2")).isEqualTo(3);
+    void devrait_additionner_deux_nombres() {
+        // GIVEN
+        var chaine = "1,2";
+        // WHEN
+        var somme = SommeChaine.somme(chaine);
+        // THEN
+        assertThat(somme).isEqualTo(3);
     }
 
     @Test
-    void somme_de_1_2_3_4_devrait_retourner_10() {
-        assertThat(SommeChaine.somme("1,2,3,4")).isEqualTo(10);
+    void devrait_additionner_un_nombre_quelconque_de_nombres() {
+        // GIVEN
+        var chaine = "1,2,3,4";
+        // WHEN
+        var somme = SommeChaine.somme(chaine);
+        // THEN
+        assertThat(somme).isEqualTo(10);
     }
 
     @Test
-    void somme_avec_un_nombre_negatif_devrait_en_tenir_compte() {
-        assertThat(SommeChaine.somme("-1,5")).isEqualTo(4);
+    void devrait_tenir_compte_des_nombres_negatifs() {
+        // GIVEN
+        var chaine = "-1,5";
+        // WHEN
+        var somme = SommeChaine.somme(chaine);
+        // THEN
+        assertThat(somme).isEqualTo(4);
     }
 
     @Test
-    void somme_devrait_ignorer_les_espaces() {
-        assertThat(SommeChaine.somme(" 1 , 2 ")).isEqualTo(3);
+    void devrait_ignorer_les_espaces() {
+        // GIVEN
+        var chaine = " 1 , 2 ";
+        // WHEN
+        var somme = SommeChaine.somme(chaine);
+        // THEN
+        assertThat(somme).isEqualTo(3);
     }
 
     @Test
-    void somme_avec_un_nombre_invalide_devrait_lever_une_exception() {
-        assertThatThrownBy(() -> SommeChaine.somme("1,a")).isInstanceOf(NumberFormatException.class);
+    void devrait_lever_une_exception_pour_un_nombre_invalide() {
+        // GIVEN
+        var chaine = "1,a";
+        // WHEN
+        var exception = catchThrowable(() -> SommeChaine.somme(chaine));
+        // THEN
+        assertThat(exception).isInstanceOf(NumberFormatException.class);
     }
 
     @Test
-    void somme_de_plusieurs_chaines_devrait_additionner_toutes_les_chaines() {
-        assertThat(SommeChaine.somme("1,2", "3")).isEqualTo(6);
+    void devrait_additionner_toutes_les_chaines_passees_en_parametre() {
+        // GIVEN
+        var premiere = "1,2";
+        var seconde = "3";
+        // WHEN
+        var somme = SommeChaine.somme(premiere, seconde);
+        // THEN
+        assertThat(somme).isEqualTo(6);
     }
 }

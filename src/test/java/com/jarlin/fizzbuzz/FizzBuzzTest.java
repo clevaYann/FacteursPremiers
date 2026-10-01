@@ -30,41 +30,76 @@ import static org.assertj.core.api.Assertions.*;
  *   cycle 7 : de(15) -> "FizzBuzz" : if (nbre % 15 == 0) return "FizzBuzz"; (placé en premier)
  *   refactor cycle 7 : concaténation de "Fizz" et "Buzz" -> plus de test % 15 redondant
  */
-public class FizzBuzzTest {
+class FizzBuzzTest {
 
     @Test
-    void fizzBuzz_de_1_devrait_retourner_1() {
-        assertThat(FizzBuzz.de(1)).isEqualTo("1");
+    void devrait_retourner_1_pour_1() {
+        // GIVEN
+        var nombre = 1;
+        // WHEN
+        var resultat = FizzBuzz.de(nombre);
+        // THEN
+        assertThat(resultat).isEqualTo("1");
     }
 
     @Test
-    void fizzBuzz_de_2_devrait_retourner_2() {
-        assertThat(FizzBuzz.de(2)).isEqualTo("2");
+    void devrait_retourner_2_pour_2() {
+        // GIVEN
+        var nombre = 2;
+        // WHEN
+        var resultat = FizzBuzz.de(nombre);
+        // THEN
+        assertThat(resultat).isEqualTo("2");
     }
 
     @Test
-    void fizzBuzz_de_3_devrait_retourner_Fizz() {
-        assertThat(FizzBuzz.de(3)).isEqualTo("Fizz");
+    void devrait_retourner_Fizz_pour_3() {
+        // GIVEN
+        var nombre = 3;
+        // WHEN
+        var resultat = FizzBuzz.de(nombre);
+        // THEN
+        assertThat(resultat).isEqualTo("Fizz");
     }
 
     @Test
-    void fizzBuzz_de_5_devrait_retourner_Buzz() {
-        assertThat(FizzBuzz.de(5)).isEqualTo("Buzz");
+    void devrait_retourner_Buzz_pour_5() {
+        // GIVEN
+        var nombre = 5;
+        // WHEN
+        var resultat = FizzBuzz.de(nombre);
+        // THEN
+        assertThat(resultat).isEqualTo("Buzz");
     }
 
     @Test
-    void fizzBuzz_de_6_devrait_retourner_Fizz() {
-        assertThat(FizzBuzz.de(6)).isEqualTo("Fizz");
+    void devrait_retourner_Fizz_pour_un_multiple_de_3() {
+        // GIVEN
+        var nombre = 6;
+        // WHEN
+        var resultat = FizzBuzz.de(nombre);
+        // THEN
+        assertThat(resultat).isEqualTo("Fizz");
     }
 
     @Test
-    void fizzBuzz_de_10_devrait_retourner_Buzz() {
-        assertThat(FizzBuzz.de(10)).isEqualTo("Buzz");
+    void devrait_retourner_Buzz_pour_un_multiple_de_5() {
+        // GIVEN
+        var nombre = 10;
+        // WHEN
+        var resultat = FizzBuzz.de(nombre);
+        // THEN
+        assertThat(resultat).isEqualTo("Buzz");
     }
 
     @Test
-    void fizzBuzz_de_15_devrait_retourner_FizzBuzz() {
-        assertThat(FizzBuzz.de(15)).isEqualTo("FizzBuzz");
+    void devrait_retourner_FizzBuzz_pour_un_multiple_de_3_et_de_5() {
+        // GIVEN
+        var nombre = 15;
+        // WHEN
+        var resultat = FizzBuzz.de(nombre);
+        // THEN
+        assertThat(resultat).isEqualTo("FizzBuzz");
     }
 
     // 3. Test paramétré de 1 à 20 (cf. Tableau 1)
@@ -73,7 +108,11 @@ public class FizzBuzzTest {
             "1, 1", "2, 2", "3, Fizz", "4, 4", "5, Buzz", "6, Fizz", "7, 7", "8, 8", "9, Fizz", "10, Buzz",
             "11, 11", "12, Fizz", "13, 13", "14, 14", "15, FizzBuzz", "16, 16", "17, 17", "18, Fizz", "19, 19", "20, Buzz"
     })
-    void fizzBuzz_de_1_a_20(int nombre, String attendu) {
-        assertThat(FizzBuzz.de(nombre)).isEqualTo(attendu);
+    void devrait_retourner_le_resultat_attendu_de_1_a_20(int nombre, String attendu) {
+        // GIVEN (nombre et attendu fournis par @CsvSource)
+        // WHEN
+        var resultat = FizzBuzz.de(nombre);
+        // THEN
+        assertThat(resultat).isEqualTo(attendu);
     }
 }

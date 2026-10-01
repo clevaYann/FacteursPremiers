@@ -15,46 +15,85 @@ import static org.assertj.core.api.Assertions.*;
  *   generate(9) -> {3, 3}     : un facteur répété autre que 2
  *   generate(2*2*3*3*5*7*11*11) -> {2, 2, 3, 3, 5, 7, 11, 11} : cas général
  */
-public class FacteursPremiersTest {
+class FacteursPremiersTest {
 
     @Test
-    void generate_de_1_devrait_retourner_une_liste_vide() {
-        assertThat(FacteursPremiers.generate(1)).isEmpty();
+    void devrait_retourner_une_liste_vide_pour_1() {
+        // GIVEN
+        var nombre = 1;
+        // WHEN
+        var facteurs = FacteursPremiers.generate(nombre);
+        // THEN
+        assertThat(facteurs).isEmpty();
     }
 
     @Test
-    void generate_de_2_devrait_retourner_2() {
-        assertThat(FacteursPremiers.generate(2)).containsExactly(2);
+    void devrait_retourner_2_pour_2() {
+        // GIVEN
+        var nombre = 2;
+        // WHEN
+        var facteurs = FacteursPremiers.generate(nombre);
+        // THEN
+        assertThat(facteurs).containsExactly(2);
     }
 
     @Test
-    void generate_de_3_devrait_retourner_3() {
-        assertThat(FacteursPremiers.generate(3)).containsExactly(3);
+    void devrait_retourner_3_pour_3() {
+        // GIVEN
+        var nombre = 3;
+        // WHEN
+        var facteurs = FacteursPremiers.generate(nombre);
+        // THEN
+        assertThat(facteurs).containsExactly(3);
     }
 
     @Test
-    void generate_de_4_devrait_retourner_2_2() {
-        assertThat(FacteursPremiers.generate(4)).containsExactly(2, 2);
+    void devrait_retourner_2_2_pour_4() {
+        // GIVEN
+        var nombre = 4;
+        // WHEN
+        var facteurs = FacteursPremiers.generate(nombre);
+        // THEN
+        assertThat(facteurs).containsExactly(2, 2);
     }
 
     @Test
-    void generate_de_6_devrait_retourner_2_3() {
-        assertThat(FacteursPremiers.generate(6)).containsExactly(2, 3);
+    void devrait_retourner_2_3_pour_6() {
+        // GIVEN
+        var nombre = 6;
+        // WHEN
+        var facteurs = FacteursPremiers.generate(nombre);
+        // THEN
+        assertThat(facteurs).containsExactly(2, 3);
     }
 
     @Test
-    void generate_de_8_devrait_retourner_2_2_2() {
-        assertThat(FacteursPremiers.generate(8)).containsExactly(2, 2, 2);
+    void devrait_retourner_2_2_2_pour_8() {
+        // GIVEN
+        var nombre = 8;
+        // WHEN
+        var facteurs = FacteursPremiers.generate(nombre);
+        // THEN
+        assertThat(facteurs).containsExactly(2, 2, 2);
     }
 
     @Test
-    void generate_de_9_devrait_retourner_3_3() {
-        assertThat(FacteursPremiers.generate(9)).containsExactly(3, 3);
+    void devrait_retourner_3_3_pour_9() {
+        // GIVEN
+        var nombre = 9;
+        // WHEN
+        var facteurs = FacteursPremiers.generate(nombre);
+        // THEN
+        assertThat(facteurs).containsExactly(3, 3);
     }
 
     @Test
-    void generate_cas_general_devrait_retourner_tous_les_facteurs_dans_l_ordre() {
-        assertThat(FacteursPremiers.generate(2 * 2 * 3 * 3 * 5 * 7 * 11 * 11))
-                .containsExactly(2, 2, 3, 3, 5, 7, 11, 11);
+    void devrait_retourner_tous_les_facteurs_dans_l_ordre_pour_un_cas_general() {
+        // GIVEN
+        var nombre = 2 * 2 * 3 * 3 * 5 * 7 * 11 * 11;
+        // WHEN
+        var facteurs = FacteursPremiers.generate(nombre);
+        // THEN
+        assertThat(facteurs).containsExactly(2, 2, 3, 3, 5, 7, 11, 11);
     }
 }

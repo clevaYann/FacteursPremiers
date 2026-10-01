@@ -25,31 +25,56 @@ import static org.assertj.core.api.Assertions.*;
  *   convert(49) -> XLIX
  *   convert(50) -> L       : borne max demandée
  */
-public class ArabicRomanNumeralsTest {
+class ArabicRomanNumeralsTest {
 
     @Test
-    void convert_de_1_devrait_retourner_I() {
-        assertThat(ArabicRomanNumerals.convert(1)).isEqualTo("I");
+    void devrait_retourner_I_pour_1() {
+        // GIVEN
+        var nombre = 1;
+        // WHEN
+        var romain = ArabicRomanNumerals.convert(nombre);
+        // THEN
+        assertThat(romain).isEqualTo("I");
     }
 
     @Test
-    void convert_de_3_devrait_retourner_III() {
-        assertThat(ArabicRomanNumerals.convert(3)).isEqualTo("III");
+    void devrait_retourner_III_pour_3() {
+        // GIVEN
+        var nombre = 3;
+        // WHEN
+        var romain = ArabicRomanNumerals.convert(nombre);
+        // THEN
+        assertThat(romain).isEqualTo("III");
     }
 
     @Test
-    void convert_de_4_devrait_retourner_IV() {
-        assertThat(ArabicRomanNumerals.convert(4)).isEqualTo("IV");
+    void devrait_retourner_IV_pour_4() {
+        // GIVEN
+        var nombre = 4;
+        // WHEN
+        var romain = ArabicRomanNumerals.convert(nombre);
+        // THEN
+        assertThat(romain).isEqualTo("IV");
     }
 
     @Test
-    void convert_de_10_devrait_retourner_X() {
-        assertThat(ArabicRomanNumerals.convert(10)).isEqualTo("X");
+    void devrait_retourner_X_pour_10() {
+        // GIVEN
+        var nombre = 10;
+        // WHEN
+        var romain = ArabicRomanNumerals.convert(nombre);
+        // THEN
+        assertThat(romain).isEqualTo("X");
     }
 
     @Test
-    void convert_de_39_devrait_retourner_XXXIX() {
-        assertThat(ArabicRomanNumerals.convert(39)).isEqualTo("XXXIX");
+    void devrait_retourner_XXXIX_pour_39() {
+        // GIVEN
+        var nombre = 39;
+        // WHEN
+        var romain = ArabicRomanNumerals.convert(nombre);
+        // THEN
+        assertThat(romain).isEqualTo("XXXIX");
     }
 
     @ParameterizedTest(name = "convert({0}) -> {1}")
@@ -58,7 +83,11 @@ public class ArabicRomanNumeralsTest {
             "10, X", "14, XIV", "19, XIX", "20, XX", "39, XXXIX", "40, XL", "44, XLIV",
             "49, XLIX", "50, L", "1970, MCMLXX", "2025, MMXXV", "3999, MMMCMXCIX"
     })
-    void convert_devrait_retourner_le_nombre_en_chiffres_romains(int nombre, String attendu) {
-        assertThat(ArabicRomanNumerals.convert(nombre)).isEqualTo(attendu);
+    void devrait_retourner_le_nombre_en_chiffres_romains(int nombre, String attendu) {
+        // GIVEN (nombre et attendu fournis par @CsvSource)
+        // WHEN
+        var romain = ArabicRomanNumerals.convert(nombre);
+        // THEN
+        assertThat(romain).isEqualTo(attendu);
     }
 }
