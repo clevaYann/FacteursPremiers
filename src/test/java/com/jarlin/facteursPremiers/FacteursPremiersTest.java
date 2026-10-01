@@ -21,4 +21,9 @@ public class FacteursPremiersTest {
     void generate_de_1_devrait_retourner_une_liste_vide() {
         assertThat(FacteursPremiers.generate(1)).isEmpty();
     }
+
+    @Test
+    void generate_de_2_devrait_retourner_2() {
+        assertThat(FacteursPremiers.generate(2)).containsExactly(2);
+    }
 }
