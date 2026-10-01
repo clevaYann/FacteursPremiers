@@ -6,14 +6,13 @@ import java.util.List;
 public class FacteursPremiers {
     public static List<Integer> generate(int nombre) {
         List<Integer> facteurs = new ArrayList<>();
-        if (nombre > 1) {
-            while (nombre % 2 == 0) {
-                facteurs.add(2);
-                nombre /= 2;
+        int diviseur = 2;
+        while (nombre > 1) {
+            while (nombre % diviseur == 0) {
+                facteurs.add(diviseur);
+                nombre /= diviseur;
             }
-            if (nombre > 1) {
-                facteurs.add(nombre);
-            }
+            diviseur++;
         }
         return facteurs;
     }
