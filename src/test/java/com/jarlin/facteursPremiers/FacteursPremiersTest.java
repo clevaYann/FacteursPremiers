@@ -16,4 +16,9 @@ import static org.assertj.core.api.Assertions.*;
  *   generate(2*2*3*3*5*7*11*11) -> {2, 2, 3, 3, 5, 7, 11, 11} : cas général
  */
 public class FacteursPremiersTest {
+
+    @Test
+    void generate_de_1_devrait_retourner_une_liste_vide() {
+        assertThat(FacteursPremiers.generate(1)).isEmpty();
+    }
 }
