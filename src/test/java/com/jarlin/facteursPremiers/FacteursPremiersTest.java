@@ -51,4 +51,10 @@ public class FacteursPremiersTest {
     void generate_de_9_devrait_retourner_3_3() {
         assertThat(FacteursPremiers.generate(9)).containsExactly(3, 3);
     }
+
+    @Test
+    void generate_cas_general_devrait_retourner_tous_les_facteurs_dans_l_ordre() {
+        assertThat(FacteursPremiers.generate(2 * 2 * 3 * 3 * 5 * 7 * 11 * 11))
+                .containsExactly(2, 2, 3, 3, 5, 7, 11, 11);
+    }
 }
